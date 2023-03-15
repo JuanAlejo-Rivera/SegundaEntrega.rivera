@@ -8,7 +8,7 @@ class ProductManager {
 
   static id = 0;
 
-  checkForFileAndReturnProducts = async () => {
+  checkProducts = async () => {
     if (fs.existsSync(this.path)) {
       let productList = await fs.promises.readFile(this.path, "utf-8");
       this.products = JSON.parse(productList);
@@ -21,12 +21,12 @@ class ProductManager {
   };
 
   getProducts = async () => {
-    this.products = await this.checkForFileAndReturnProducts();
+    this.products = await this.checkProducts();
     return this.products;
   };
 
   addProduct = async (title, description, price, thumbnail, code, stock) => {
-    this.products = await this.checkForFileAndReturnProducts();
+    this.products = await this.checkProducts();
     const checkForDuplicatedCode = this.products.filter(
       (product) => product.code === code
     );
@@ -53,7 +53,7 @@ class ProductManager {
   };
 
   updateProduct = async (id, updatedProduct) => {
-    this.products = await this.checkForFileAndReturnProducts();
+    this.products = await this.checkProducts();
     let product = this.products.find((product) => product.id == id);
     if (product) {
       product.title = updatedProduct.title || product.title;
@@ -72,7 +72,7 @@ class ProductManager {
   };
 
   deleteProduct = async (id) => {
-    this.products = await this.checkForFileAndReturnProducts();
+    this.products = await this.checkProducts();
     const checkForID = this.products.findIndex((product) => product.id === id);
 
     if (checkForID > -1) {
@@ -85,7 +85,7 @@ class ProductManager {
   };
 
   getProductById = async (id) => {
-    this.products = await this.checkForFileAndReturnProducts();
+    this.products = await this.checkProducts();
     const productByID = this.products.find((product) => product.id === id);
     if (productByID) {
       return productByID;
