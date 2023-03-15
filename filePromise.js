@@ -8,6 +8,8 @@ class ProductManager {
 
   static id = 0;
 
+
+
   checkProducts = async () => {
     if (fs.existsSync(this.path)) {
       let productList = await fs.promises.readFile(this.path, "utf-8");
@@ -19,6 +21,7 @@ class ProductManager {
     }
     return this.products;
   };
+
 
   getProducts = async () => {
     this.products = await this.checkProducts();
