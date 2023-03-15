@@ -121,7 +121,7 @@ newSess.addProduct(
 console.log("Lista de productos productos agregados:");
 console.log(newSess.getProducts());
 
-//tratar de agregar producto, pero con código repetido
+// tratar de agregar producto, pero con código repetido
 newSess.addProduct(
   "Cerveza Mestiza Panzenú",
   "Cerveza clasica hecha con los sabores tipos colombianos como el maiz y lúpulo",
@@ -142,10 +142,10 @@ let prodUpdate = {
 };
 
 console.log("Lista de productos después de actualizar el título del primero:");
-console.log(newSess.getProducts());
+console.log(newSess.getProducts());///
 // obtener producto por id - correcto e incorrecto
-newSess.getProductById(1);
-newSess.getProductById(7);
+newSess.getProductById(1);///
+newSess.getProductById(7);///
 
 //eliminar producto
 newSess.deleteProduct(1);
